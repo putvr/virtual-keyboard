@@ -122,12 +122,43 @@ const mapping = {
     en: 'Meta', ru: 'Meta', caps_en: 'Meta', caps_ru: 'Meta',
   },
   Space: {
-    en: '____', ru: '____', caps_en: '____', caps_ru: '____',
+    en: '', ru: '', caps_en: '', caps_ru: '',
   },
 
 };
 
-const en2ru = (char) => `${char}ru`;
+const en2ru = (char) => {
+  const s = {
+    q: 'й',
+    w: 'ц',
+    e: 'у',
+    r: 'к',
+    t: 'е',
+    y: 'н',
+    u: 'г',
+    i: 'ш',
+    o: 'щ',
+    p: 'з',
+    a: 'ф',
+    s: 'ы',
+    d: 'в',
+    f: 'а',
+    g: 'п',
+    h: 'р',
+    j: 'о',
+    k: 'л',
+    l: 'д',
+    z: 'я',
+    x: 'ч',
+    c: 'с',
+    v: 'м',
+    b: 'и',
+    n: 'т',
+    m: 'ь',
+  };
+
+  return s[char.toLowerCase()] || '?';
+};
 
 export const getCodeFromEvent = (event) => {
   if (event instanceof PointerEvent) {
@@ -164,4 +195,3 @@ export const codeToValue = (code, lang, caps = false) => {
 
   return val;
 };
-// export default data;

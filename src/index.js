@@ -6,13 +6,8 @@ import { data, getCodeFromEvent } from './data';
 const ANIMATION_TIMEOUT = 100;
 
 const state = {
-  lang: 'en',
+  lang: localStorage.getItem('lang') || 'en',
   text: '',
-  mods: {
-    caps: false,
-    shift: false,
-    ctrl: false,
-  },
 };
 
 state.data = data;

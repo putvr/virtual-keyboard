@@ -46,26 +46,15 @@ export default class {
         this.delete();
         break;
 
+      // ignore mods
       case 'AltRight':
       case 'AltLeft':
-        console.log('Alt!');
-        break;
-
       case 'MetaRight':
       case 'MetaLeft':
-        console.log('Meta!');
-        break;
-
       case 'ShiftLeft':
       case 'ShiftRight':
-        console.log('Shift!');
-        break;
-
       case 'ControlLeft':
-        break;
-
       case 'CapsLock':
-        this.toggleCaps();
         break;
 
       case 'Enter':

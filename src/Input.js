@@ -91,6 +91,8 @@ export default class {
     this.info.textContent = newLang;
     this.state.lang = newLang;
 
+    localStorage.setItem('lang', newLang);
+
     document.querySelectorAll('.btn').forEach((btn) => {
       const t = btn;
 
