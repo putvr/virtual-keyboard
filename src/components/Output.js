@@ -23,17 +23,11 @@ export default class {
     this.textArea.classList.toggle('display');
 
     this.container.append(this.textArea);
-
-    this.textArea.addEventListener('input', (e) => {
-      console.log(e, e.target.selectionStart);
-    });
   }
 
   add(event) {
     const code = getCodeFromEvent(event);
     event.preventDefault();
-
-    console.log(event);
 
     let s = '';
 

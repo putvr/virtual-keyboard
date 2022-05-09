@@ -38,17 +38,15 @@ export default class {
     element.append(this.wrapper);
 
     // create keyboard
-    for (const r of this.state.data.keys) {
+    this.state.data.keys.forEach((rowsElements) => {
       // create rows
       const row = document.createElement('div');
       row.classList.add('row');
       this.wrapper.append(row);
 
       // create keys
-      for (const key of r) {
-        row.append(this.createButton(key));
-      }
-    }
+      rowsElements.forEach((key) => row.append(this.createButton(key)));
+    });
 
     // create info
     this.info = document.createElement('div');

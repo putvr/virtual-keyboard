@@ -195,7 +195,7 @@ export const codeToValue = (code, lang, caps = false) => {
   }
 
   if (!mapping[code]) {
-    console.log(`Add ${code}`);
+    // console.warn(`Add ${code}`);
     return val;
   }
   const mod = (caps ? 'caps_' : '');

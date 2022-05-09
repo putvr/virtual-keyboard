@@ -15,12 +15,7 @@
     },
     "extends": [
       "airbnb-base"
-    ],
-    "rules": {
-      "no-restricted-syntax": "off",
-      "class-methods-use-this": "off",
-      "no-console": "off"
-    }
+    ]
   },
   "stylelint": {
     "extends": "stylelint-config-standard-scss"
