@@ -29,11 +29,14 @@ export default class {
     const code = getCodeFromEvent(event);
     event.preventDefault();
 
+    if (code.startsWith('Num')) return;
+    if (code.startsWith('F')) return;
+
     let s = '';
 
     switch (code) {
       case 'Delete':
-        this.delete();
+        // this.delete();
         break;
 
       case 'Backspace':
@@ -51,6 +54,12 @@ export default class {
       case 'ControlRight':
       case 'CapsLock':
       case 'ContextMenu':
+      case 'Home':
+      case 'End':
+      case 'Insert':
+      case 'Escape':
+      case 'PageUp':
+      case 'PageDown':
         break;
 
       case 'Enter':
