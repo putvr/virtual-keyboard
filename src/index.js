@@ -33,7 +33,7 @@ const dispacher = (action) => {
       break;
 
     case 'keyup':
-      k.release(action.code);
+      k.release(action.code, action.ctrlKey, action.altKey);
       d.add(action);
       break;
 

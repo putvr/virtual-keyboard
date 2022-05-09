@@ -1,9 +1,11 @@
 import { codeToValue } from '../utils';
 
 const PRESSED_BUTTON = 'btn--pressed';
-// const INFO_TEXT = `
-// Тесмтирование выполняет на Windows
-// Переключение раскладки выполняется     `;
+const INFO_TEXT = `
+Привет!<br>
+Переключение раскладки выполняется через стандартный Ctrl + Alt<br>
+Или клику по этой надписи. Сейчас выбрана 
+`;
 
 export default class {
   constructor(element, state) {
@@ -21,6 +23,7 @@ export default class {
     const b = document.createElement('button');
     b.classList.add('btn');
     b.classList.add(`btn-${key.toLowerCase()}`);
+    b.tabIndex = -1;
     b.dataset.code = key;
 
     b.textContent = codeToValue(key, this.state.lang);
@@ -49,8 +52,8 @@ export default class {
 
     // create info
     this.info = document.createElement('div');
-    this.info.classList.add('row');
-    this.info.textContent = this.state.lang;
+    this.info.classList.add('row', 'info');
+    this.info.innerHTML = INFO_TEXT + this.state.lang;
     this.wrapper.append(this.info);
   }
 
@@ -69,13 +72,19 @@ export default class {
     }
   }
 
-  release(code) {
+  release(code, isCtrlPressed = false, isAltPressed = false) {
     if (code === 'CapsLock' && this.state.caps) {
       this.toggleUpperCase(this.state.caps);
       return;
     }
     if (code === 'ShiftLeft') {
       this.toggleUpperCase(false);
+    }
+    if (code === 'AltLeft' && isCtrlPressed) {
+      this.switchLang();
+    }
+    if (code === 'ControlLeft' && isAltPressed) {
+      this.switchLang();
     }
 
     const b = document.querySelectorAll(`.btn-${code.toLowerCase()}`);
@@ -88,7 +97,7 @@ export default class {
   switchLang() {
     const newLang = (this.state.lang === 'en') ? 'ru' : 'en';
 
-    this.info.textContent = newLang;
+    this.info.innerHTML = INFO_TEXT + newLang;
     this.state.lang = newLang;
 
     localStorage.setItem('lang', newLang);

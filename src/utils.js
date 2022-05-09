@@ -8,7 +8,7 @@ export const data = {
 
     ['ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp', 'ShiftLeft'],
 
-    ['ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'MetaRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight'],
+    ['ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'MetaRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'ControlLeft'],
   ],
 
 };
@@ -33,7 +33,7 @@ const mapping = {
     en: '\'', ru: 'э', caps_en: '"', caps_ru: 'Э',
   },
   Enter: {
-    en: 'Enter', ru: 'Enter', caps_en: 'Enter', caps_ru: 'Enter',
+    en: '⏎', ru: '⏎', caps_en: '⏎', caps_ru: '⏎',
   },
   Comma: {
     en: ',', ru: 'б', caps_en: '<', caps_ru: 'Б',
@@ -46,6 +46,12 @@ const mapping = {
   },
   Delete: {
     en: 'Del', ru: 'Del', caps_en: 'Del', caps_ru: 'Del',
+  },
+  Backspace: {
+    en: '⌫', ru: '⌫', caps_en: '⌫', caps_ru: '⌫',
+  },
+  Tab: {
+    en: '⇥', ru: '⇥', caps_en: '⇥', caps_ru: '⇥',
   },
 
   // Arrows
@@ -104,22 +110,25 @@ const mapping = {
 
   // Mod
   CapsLock: {
-    en: 'Caps', ru: 'Caps', caps_en: 'Caps', caps_ru: 'Caps',
+    en: '⇪', ru: '⇪', caps_en: '⇪', caps_ru: '⇪',
   },
   ShiftLeft: {
-    en: 'Shift', ru: 'Shift', caps_en: 'Shift', caps_ru: 'Shift',
+    en: '⇧', ru: '⇧', caps_en: '⇧', caps_ru: '⇧',
   },
   ControlLeft: {
+    en: 'Ctrl', ru: 'Ctrl', caps_en: 'Ctrl', caps_ru: 'Ctrl',
+  },
+  ControlRight: {
     en: 'Ctrl', ru: 'Ctrl', caps_en: 'Ctrl', caps_ru: 'Ctrl',
   },
   AltLeft: {
     en: 'Alt', ru: 'Alt', caps_en: 'Alt', caps_ru: 'Alt',
   },
   MetaLeft: {
-    en: 'Meta', ru: 'Meta', caps_en: 'Meta', caps_ru: 'Meta',
+    en: '⌘', ru: '⌘', caps_en: '⌘', caps_ru: '⌘',
   },
   MetaRight: {
-    en: 'Meta', ru: 'Meta', caps_en: 'Meta', caps_ru: 'Meta',
+    en: '⌘', ru: '⌘', caps_en: '⌘', caps_ru: '⌘',
   },
   Space: {
     en: '', ru: '', caps_en: '', caps_ru: '',

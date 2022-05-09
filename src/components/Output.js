@@ -17,8 +17,9 @@ export default class {
     this.textArea = document.createElement('textarea');
     this.textArea.cols = 70;
     this.textArea.rows = 10;
+    this.textArea.tabIndex = -1;
     this.textArea.autofocus = true;
-    // this.textArea.disabled = true;
+    this.textArea.readOnly = true;
     this.textArea.classList.toggle('display');
 
     this.container.append(this.textArea);
@@ -26,16 +27,11 @@ export default class {
     this.textArea.addEventListener('input', (e) => {
       console.log(e, e.target.selectionStart);
     });
-
-    // cursor
-    // this.cursor = document.createElement('div');
-    // this.cursor.classList.toggle('cursor');
-    // this.cursor = [0, 0];
-    // this.container.append(this.cursor);
   }
 
   add(event) {
     const code = getCodeFromEvent(event);
+    event.preventDefault();
 
     console.log(event);
 
@@ -47,7 +43,7 @@ export default class {
         break;
 
       case 'Backspace':
-        this.delete(true);
+        this.delete();
         break;
 
       // ignore mods
@@ -58,7 +54,9 @@ export default class {
       case 'ShiftLeft':
       case 'ShiftRight':
       case 'ControlLeft':
+      case 'ControlRight':
       case 'CapsLock':
+      case 'ContextMenu':
         break;
 
       case 'Enter':
@@ -75,32 +73,10 @@ export default class {
         s = codeToValue(code, this.state.lang, this.state.caps || event.shiftKey);
     }
 
-    const offset = this.textArea.selectionStart;
-
-    this.textArea.textContent = this.textArea.textContent.slice(0, offset) + s
-    + this.textArea.textContent.slice(offset);
-
-    if (offset === 0) {
-      const len = this.textArea.textContent.length;
-      this.textArea.focus();
-      this.textArea.setSelectionRange(len, len);
-    }
-
-    // const len = this.textArea.textContent.length;
-    // this.textArea.focus();
-    // this.textArea.setSelectionRange(len, len);
+    this.textArea.textContent += s;
   }
 
-  delete(next = true) {
-    const text = this.textArea.textContent;
-
-    if (text.length === 0) { return; }
-    // find cursor position
-    const offset = this.textArea.selectionStart;
-
-    console.log('offset :>> ', `${offset}${next}${this.textArea.selectionEnd}`);
-
-    this.textArea.textContent = this.textArea.textContent.slice(0, offset)
-    + this.textArea.textContent.slice(offset);
+  delete() {
+    this.textArea.textContent = this.textArea.textContent.slice(0, -1);
   }
 }

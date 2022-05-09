@@ -1,7 +1,5 @@
-$body-color: red;
-
 body {
-  color: $body-color;
+  background-color: #252525;
 }
 
 #root {
@@ -17,24 +15,36 @@ body {
 
 .row {
   display: flex;
-  justify-content: space-between;
+
+  // justify-content: space-between;
+  padding-top: 5px;
 }
 
 /* Keyboard */
 .btn {
+  width: 10%;
+  margin-right: 5px;
+  padding: 5px;
   flex-grow: 1;
   font-size: 25px;
   line-height: 30px;
   cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #535353;
+  color: white;
 
   &--pressed {
-    color: $body-color;
-    transform: translateY(-10px);
+    background-color: #959595;
   }
 }
 
 .btn-space {
-  flex-grow: 5;
+  width: 80%;
+}
+
+.btn-shiftleft {
+  width: 20%;
 }
 
 /* Display */
@@ -42,6 +52,7 @@ body {
   resize: none;
   font-size: 16px;
   line-height: 20px;
+  width: calc(100% - 10px);
 }
 
 .cursor {
@@ -51,4 +62,9 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.info {
+  padding-top: 20px;
+  color: white;
 }
