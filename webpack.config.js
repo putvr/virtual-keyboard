@@ -15,6 +15,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       filename: 'index.html',
+      favicon: 'src/favicon.png',
     }),
     new ESLintPlugin({
       extensions: ['js'],
@@ -23,6 +24,7 @@ module.exports = {
       files: path.join('src', '**/*.s?(a|c)ss'),
       fix: true,
     }),
+
   ],
   module: {
     rules: [
