@@ -1,5 +1,6 @@
 body {
   background-color: #252525;
+  color: white;
 }
 
 #root {
@@ -15,9 +16,12 @@ body {
 
 .row {
   display: flex;
-
-  // justify-content: space-between;
   padding-top: 5px;
+}
+
+.title {
+  text-align: center;
+  padding: 10px;
 }
 
 /* Keyboard */
@@ -44,7 +48,7 @@ body {
 }
 
 .btn-shiftleft {
-  width: 20%;
+  width: calc(20% + 10px);
 }
 
 /* Display */
@@ -53,6 +57,11 @@ body {
   font-size: 16px;
   line-height: 20px;
   width: calc(100% - 10px);
+  background-color: #b9baba;
+
+  &:focus {
+    border: none;
+  }
 }
 
 .cursor {
@@ -66,5 +75,4 @@ body {
 
 .info {
   padding-top: 20px;
-  color: white;
 }

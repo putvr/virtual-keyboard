@@ -1,7 +1,7 @@
 import './style.scss';
 import Display from './components/Output';
 import Keyboard from './components/Input';
-import { data, getCodeFromEvent } from './utils';
+import { data, getCodeFromEvent, renderTitle } from './utils';
 
 const ANIMATION_TIMEOUT = 100;
 
@@ -44,6 +44,7 @@ const dispacher = (action) => {
   }
 };
 
+renderTitle('Virtual keyboard');
 d.init();
 k.init();
 

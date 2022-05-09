@@ -204,3 +204,10 @@ export const codeToValue = (code, lang, caps = false) => {
 
   return val;
 };
+
+export const renderTitle = (text) => {
+  const title = document.createElement('h1');
+  title.classList.add('container', 'title');
+  title.textContent = text;
+  document.getElementById('root').append(title);
+};
