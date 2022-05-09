@@ -8,3 +8,47 @@ body {
   min-width: 500px;
   min-height: 200px;
 }
+
+.container {
+  position: relative;
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Keyboard */
+.btn {
+  flex-grow: 1;
+  font-size: 25px;
+  line-height: 30px;
+  cursor: pointer;
+
+  &--pressed {
+    color: $body-color;
+    transform: translateY(-10px);
+  }
+}
+
+.btn-space {
+  flex-grow: 5;
+}
+
+/* Display */
+.display {
+  resize: none;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.cursor {
+  width: 10px;
+  height: 20px;
+  background-color: red;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
