@@ -1,7 +1,7 @@
 import './style.scss';
-import Display from './Output';
-import Keyboard from './Input';
-import { data, getCodeFromEvent } from './data';
+import Display from './components/Output';
+import Keyboard from './components/Input';
+import { data, getCodeFromEvent } from './utils';
 
 const ANIMATION_TIMEOUT = 100;
 

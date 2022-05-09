@@ -1,4 +1,4 @@
-import { codeToValue } from './data';
+import { codeToValue } from '../utils';
 
 const PRESSED_BUTTON = 'btn--pressed';
 // const INFO_TEXT = `

@@ -1,4 +1,4 @@
-import { codeToValue, getCodeFromEvent } from './data';
+import { codeToValue, getCodeFromEvent } from '../utils';
 
 export default class {
   constructor(element, state) {
@@ -17,10 +17,15 @@ export default class {
     this.textArea = document.createElement('textarea');
     this.textArea.cols = 70;
     this.textArea.rows = 10;
+    this.textArea.autofocus = true;
     // this.textArea.disabled = true;
     this.textArea.classList.toggle('display');
 
     this.container.append(this.textArea);
+
+    this.textArea.addEventListener('input', (e) => {
+      console.log(e, e.target.selectionStart);
+    });
 
     // cursor
     // this.cursor = document.createElement('div');
@@ -38,12 +43,11 @@ export default class {
 
     switch (code) {
       case 'Delete':
-        console.log('delete!');
+        this.delete();
         break;
 
       case 'Backspace':
-        console.log('Backspace!');
-        this.delete();
+        this.delete(true);
         break;
 
       // ignore mods
@@ -71,10 +75,32 @@ export default class {
         s = codeToValue(code, this.state.lang, this.state.caps || event.shiftKey);
     }
 
-    this.textArea.textContent += s;
+    const offset = this.textArea.selectionStart;
+
+    this.textArea.textContent = this.textArea.textContent.slice(0, offset) + s
+    + this.textArea.textContent.slice(offset);
+
+    if (offset === 0) {
+      const len = this.textArea.textContent.length;
+      this.textArea.focus();
+      this.textArea.setSelectionRange(len, len);
+    }
+
+    // const len = this.textArea.textContent.length;
+    // this.textArea.focus();
+    // this.textArea.setSelectionRange(len, len);
   }
 
-  delete() {
-    this.textArea.textContent = this.textArea.textContent.slice(0, -1);
+  delete(next = true) {
+    const text = this.textArea.textContent;
+
+    if (text.length === 0) { return; }
+    // find cursor position
+    const offset = this.textArea.selectionStart;
+
+    console.log('offset :>> ', `${offset}${next}${this.textArea.selectionEnd}`);
+
+    this.textArea.textContent = this.textArea.textContent.slice(0, offset)
+    + this.textArea.textContent.slice(offset);
   }
 }
