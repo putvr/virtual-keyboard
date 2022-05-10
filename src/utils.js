@@ -170,7 +170,7 @@ const en2ru = (char) => {
 };
 
 export const getCodeFromEvent = (event) => {
-  if (event instanceof PointerEvent) {
+  if (event instanceof PointerEvent || event instanceof MouseEvent) {
     return event.target.dataset.code;
   }
 
