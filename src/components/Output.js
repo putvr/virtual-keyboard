@@ -60,6 +60,8 @@ export default class {
       case 'Escape':
       case 'PageUp':
       case 'PageDown':
+      case 'OSLeft':
+      case 'OSRight':
         break;
 
       case 'Enter':
