@@ -54,23 +54,19 @@ body {
 /* Display */
 .display {
   resize: none;
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 20px;
+  line-height: 24px;
   width: calc(100% - 10px);
   background-color: #b9baba;
 
-  &:focus {
-    border: none;
+  &:read-only {
+    color: red;
+    caret-color: red;
   }
-}
 
-.cursor {
-  width: 10px;
-  height: 20px;
-  background-color: red;
-  position: absolute;
-  top: 0;
-  left: 0;
+  &:focus {
+    outline: none !important;
+  }
 }
 
 .info {

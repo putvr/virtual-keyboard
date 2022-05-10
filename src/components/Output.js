@@ -19,10 +19,15 @@ export default class {
     this.textArea.rows = 10;
     this.textArea.tabIndex = -1;
     this.textArea.autofocus = true;
-    this.textArea.readOnly = true;
+    // this.textArea.readOnly = true;
+    this.textArea.contentEditable = true;
     this.textArea.classList.toggle('display');
 
     this.container.append(this.textArea);
+
+    this.textArea.addEventListener('oncut', (e) => e.preventDefault(), false);
+    this.textArea.addEventListener('onpaste', (e) => e.preventDefault(), false);
+    this.textArea.addEventListener('keydown', (e) => e.preventDefault(), false);
   }
 
   add(event) {
@@ -36,11 +41,11 @@ export default class {
 
     switch (code) {
       case 'Delete':
-        // this.delete();
+        this.delete();
         break;
 
       case 'Backspace':
-        this.delete();
+        this.back();
         break;
 
       // ignore mods
@@ -78,10 +83,37 @@ export default class {
         s = codeToValue(code, this.state.lang, this.state.caps || event.shiftKey);
     }
 
-    this.textArea.textContent += s;
+    const offset = this.textArea.selectionStart;
+    // const l = offset || this.textArea.textContent.length;
+
+    this.textArea.textContent = this.textArea.textContent.slice(0, offset) + s
+    + this.textArea.textContent.slice(offset);
+
+    this.focus(offset + 1);
   }
 
+  // WTF I`m doing? 🤦🏻‍♂️😱🤯
   delete() {
-    this.textArea.textContent = this.textArea.textContent.slice(0, -1);
+    const offset = this.textArea.selectionStart;
+    this.textArea.textContent = this.textArea.textContent.slice(0, offset)
+    + this.textArea.textContent.slice(offset + 1);
+    this.focus(offset - 1);
+  }
+
+  back() {
+    const offset = this.textArea.selectionStart;
+
+    this.textArea.textContent = this.textArea.textContent.slice(0, offset - 1)
+    + this.textArea.textContent.slice(offset);
+
+    const o2 = (offset <= 1) ? 0 : offset - 2;
+
+    this.textArea.setSelectionRange(o2, o2 + 1);
+  }
+
+  focus(offset = false) {
+    const l = offset || this.textArea.textContent.length;
+    this.textArea.focus();
+    this.textArea.setSelectionRange(l, l);
   }
 }
